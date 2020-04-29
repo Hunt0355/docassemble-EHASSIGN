@@ -1,0 +1,18 @@
+---
+objects:
+  - endpoint: DADict
+---
+# This code block drives public requests. It determines whether member
+# of public wants to complain OR whether they just want information 
+# If want to complain, directs user to 'eligible' endpoint. Otherwise, directs 
+# to 'ineligible' endpoint.  
+# Note: This code block must be mandatory
+mandatory: True
+code: |
+  if purpose == 'req_informal_complaint':
+    endpoint['eligible']
+  elif purpose == 'req_public_info':
+    endpoint['ineligible']
+  else:
+    endpoint['link_page']
+---

@@ -1,0 +1,109 @@
+---
+# DOCUMENT QUESTIONAIRE PART 1
+# This is the beginning of question process to create
+# a document/ informal complaint
+
+#NEED: to inform that "mx" is genre neutral??
+
+question: Name
+subquestion: |
+  **Name**
+  
+  Please state your full name, including any middle name(s). 
+fields:
+  - Salutation: public_salutation 
+    choices:
+    - Mr
+    - Mrs
+    - Ms
+    - Miss
+    - Mx
+    - Dr 
+  - First Name: public_firstname
+  - Middle Name(s): public_middlename
+    required: False
+  - Last Name: public_lastname
+back button: True
+---
+# DOCUMENT QUESTIONAIRE PART 2: WHO FILING FOR
+# MAKE OPTIONS sound better. MUST be worded in favour of individuals, not 
+# suggesting they are the inconvenience
+# link page must be default else option 
+#NEEDS: a note/ see below: "psn...who encountered a hindrance to access of a public venue on the basis of their disabiliity"
+
+question: Complaining individual
+subquestion: |
+  Who are you making this complaint for?  
+fields: 
+ - I am making this complaint: position_of_complainant
+   choices: 
+   - For myself
+   - On behalf of someone else
+back button: True
+---
+# DOCUMENT QUESTIONAIRE PART 3
+
+#NEED: is location_known() an option? or are we free texting it 
+#NEED: less adversarial wording
+
+question: Who are you making this acces alert against?
+fields:
+  - Name of the relevant venue: target_venue
+  - note: |
+      This can be easily searched up on google. 
+      Please use most recognisable name blah blah... 
+      Please use capitals for each word.
+      (You will later need to submit email 
+      address as advertised online by this venue.
+---
+question: What type of venue is this complaint about?
+subquestion: |
+  Who are you making this complaint against?  
+fields:
+  - Type of venue: venue_type
+    choices:
+    - A
+    - B
+    - C
+    - D
+    - E
+    - F 
+  - note: |
+      EXPLANATION of what constitutes:
+      A:
+      B:
+      C:
+      D:
+     
+back button: True
+---
+# DOCUMENT QUESTIONAIRE PART 4
+question: Nature of disability 
+subquestion: |
+  Which categories of disabiltities do you (associate with/ fall under)?
+  OR, "which disabilities that you possess do you feel were affected by 
+  the venue? (must include disclaimer that all disabilities are valid but
+  require relevant ones 
+fields:
+  - "Select all which are applicable": rel_disabilities
+    datatype: checkboxes
+    choices:
+      - Visual
+      - Auditory
+      - Physical
+      - Mental
+  - "If disability does not fall into categories provided, please specify below": other_disab
+    show if: 
+      variable: rel_disabilities is 'none of the above'
+      is: 'Yes'
+---
+#SIGNATURE
+question: |
+  Sign your name
+subquestion: |
+  By signing your name, you agree to
+  our terms and conditions.
+signature: target_variable
+under: |
+  ${ user }
+---
