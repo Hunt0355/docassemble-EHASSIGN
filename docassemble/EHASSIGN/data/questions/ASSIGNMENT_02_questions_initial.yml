@@ -1,0 +1,21 @@
+---
+# This question block asks the questions to drive code block 'purpose'.
+
+#NEED: how to get "help" icons to LHS/ have text displayed off text
+
+question: Purpose of visit to site
+subquestion: |
+  **For which reason are you accessing this service?**
+field: purpose
+choices:
+  - I wish to make an informal complaint to a venue: req_informal_complaint
+    help: |
+        This will take you to a questionaire, where you will answer questions about your experience whereby you felt your rights to access were *affected* on the grounds of your disability/ you felt the venue did not conform to its disability access obligations. This questionaire will format a formal letter to be sent to the venue, notifying them of their shortcomings. 
+  - I wish to recieve more information about my rights: req_public_info
+    help: |
+        This will take you to a page where you be informed on your rights 
+        under discrimination law, the obligations of venues to 
+        accomodate your needs, and an explanation of the purpose of this service.
+  - Other: other_purpose
+back button: True
+---

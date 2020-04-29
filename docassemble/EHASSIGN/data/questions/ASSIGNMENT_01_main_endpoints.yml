@@ -1,0 +1,85 @@
+---
+include:
+  - ASSIGNMENT_02_questions_initial.yml
+  - ASSIGNMENT_03_questions_public.yml
+  - ASSIGNMENT_04_code.yml
+---
+# This is the eligible endpoint.
+# Generated complaint form
+event: endpoint['eligible']
+question: Here is your document.
+subquestion: |
+  #### Hello ${ public_salutation +' '+ public_lastname },  
+  
+  %if position_of_complainant == 'For myself':
+  This complaint has been brought by ${ public_salutation +' '+ public_lastname } on behalf of themselves. 
+  %elif position_of_complainant == 'On behalf of someone else':
+  This complaint has been brought by ${ public_salutation +' '+ public_lastname } on behalf of another. 
+  %endif
+
+  Complaint made regarding ${ target_venue }.
+
+
+buttons:
+ - Finish: exit
+   url: https://eoc.sa.gov.au/
+ - Restart form: restart
+---
+# This is the ineligible endpoint
+# This is where the document giving information on rights will be
+# It will be displayed on this screen in a drop down menu, AND 
+# at the bottom will be a downloadable PDF copy with option to email 
+event: endpoint['ineligible']
+question: Information on rights 
+subquestion: |
+  **Below is information regarding rights** 
+  
+  - Basic info of rights to access 
+  - Basic info on venue obligations (brief mention exceptions)
+  - Basics re disabilities and types of reasonable access provisions
+  - EOC as leading body in SA: have own formal process, use IF..
+  - Explain this is a precursor to formal process. If you wish to make an 
+    informal process as so described, click reset and follow informal 
+    complaint option (OR should this page link back to if_public and 
+    req_informal_complaint (ASK MARK ON HOW TO LINK TO SAME FILE
+    
+ 
+  **For other infomration or to access the formal complaint syst,**
+  **follow this link to the EOC page:** [click here](https://eoc.sa.gov.au/).
+  
+buttons:
+ - Exit: exit
+   url: https://eoc.sa.gov.au/
+ - Restart: restart
+---
+# This is the 'links' endpoint.
+# It will suggest this is not the software for them
+# It will explain functions of this app to informa + assist informal complaints
+#and provide links to EOC page AND complaints system
+event: endpoint['link_page']
+question: Information on rights 
+subquestion: |
+  **Hello User,** 
+  
+  If you clicked "other", this suggests you do not wish to use 
+  this software for its designated use 
+  
+  
+  **designated uses:**
+  
+  1) Provide for informal complaint process (explain)
+  
+  2) Provide information for both individuals and venues re. disability 
+  discriminattion on public premises. 
+  
+  If you wish instead to access EOC page, click [here](https://eoc.sa.gov.au/).
+  
+  If wish to access EOC complaint system, *link to be provided here*.
+  
+  Otherwise, we recommend starting again. 
+  
+buttons:
+ - Exit: exit
+   url: https://eoc.sa.gov.au/
+ - Restart: restart
+---
